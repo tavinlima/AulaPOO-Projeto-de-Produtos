@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using ProjetoProdutos.Interfaces;
 
 namespace ProjetoProdutos.Classes
@@ -10,29 +11,28 @@ namespace ProjetoProdutos.Classes
         public string Email { get; set; }
         public string Senha { get; set; }
         public DateTime DataCadastro { get; set; }
+        List<Usuario> usuarios = new List<Usuario>();
+
+        public Usuario(){
+            
+        }
+
+        public Usuario(int _codigo, string _nome, string _email, string _senha){
+            this.Codigo = _codigo;
+            this.Nome = _nome;
+            this.Email = _email;
+            this.Senha = _senha;
+        }
 
         public string Cadastrar(Usuario usuario)
         {
-            Usuario u = new Usuario();
-            
-            Console.WriteLine("Insira o código de usuário: ");
-            u.Codigo = int.Parse(Console.ReadLine());
-
-            Console.WriteLine("Insira o nome de usuário: ");
-            u.Nome = Console.ReadLine();
-
-            Console.WriteLine("Insira o e-mail de usuario: ");
-            u.Email = Console.ReadLine();
-
-            Console.WriteLine("Insira a senha de usuário: ");
-            u.Senha = Console.ReadLine();
-            
-
-            return $"O usuário {u.Nome} foi cadastrado";
+            usuarios.Add(usuario);
+            return $"O usuário {Nome} foi cadastrado";
         }
 
         public string Deletar(Usuario usuario)
         {
+            usuarios.Remove(usuario);
             return $"O usuario {Nome} foi deletado";
         }
     }
