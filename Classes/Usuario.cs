@@ -22,6 +22,7 @@ namespace ProjetoProdutos.Classes
             this.Nome = _nome;
             this.Email = _email;
             this.Senha = _senha;
+            DataCadastro = DateTime.Now;
         }
 
         public string Cadastrar(Usuario usuario)
