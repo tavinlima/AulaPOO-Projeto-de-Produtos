@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using ProjetoProdutos.Interfaces;
 
 namespace ProjetoProdutos.Classes
@@ -7,6 +8,8 @@ namespace ProjetoProdutos.Classes
     {
         public bool Logado { get; set; }
         public bool opcaoValida { get; set; }
+        string EmailUsuario;
+        string SenhaUsuario;
         public string Deslogar(Usuario usuario)
         {
             if (Logado)
@@ -22,11 +25,21 @@ namespace ProjetoProdutos.Classes
             if (!Logado)
             {
                 Console.WriteLine("Obrigado por utilizar em nosso sistema, para entrar");
+                Console.WriteLine("Digite seu e-mail: ");
+                string EmailUsuario = Console.ReadLine();
+                
+                Console.WriteLine("Digite sua senha: ");
+                string SenhaUsuario = Console.ReadLine();
             }
             return "O usuario logou";
         }
 
         void ILogin.Login()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Login()
         {
             do
             {
@@ -35,12 +48,14 @@ namespace ProjetoProdutos.Classes
 O que deseja fazer?
 
 1 - Cadastrar usuário
-2 - Cadastrar produtos
-3 - Cadastrar Marcas
+2 - Fazer Login
+
+0 - Sair do Sistema
             ");
 
                 string opcao = Console.ReadLine();
                 Marca marca = new Marca();
+                Usuario usuario = new Usuario();
 
                 switch (opcao)
                 {
@@ -54,44 +69,76 @@ O que deseja fazer?
                         Console.WriteLine("Insira a senha de usuário: ");
                         string SenhaUsuario = Console.ReadLine();
 
-                        Usuario usuario = new Usuario(123456, NomeUsuario, EmailUsuario, SenhaUsuario);
-                        usuario.Cadastrar(usuario);
-
+                        Usuario usuario1 = new Usuario(123456, NomeUsuario, EmailUsuario, SenhaUsuario);
+                        usuario.Cadastrar(usuario1);
+                        opcaoValida = false;
                         break;
 
                     case "2":
-                        if (marca.Cadastrar(marca) == null)
+                        List<Usuario> usuarios = usuario.ListarUsuarios();
+                        if (usuarios.Find(cadaLinha => cadaLinha.Email == usuario.Email).Senha == this.SenhaUsuario)
                         {
-                          Console.WriteLine("É preciso existir uma marca cadastrada para cadastrar um produto!");   
-                        }else
+                            Logar(usuario);
+                        }
+                        Console.WriteLine($@"
+                        Escolha o que deseja fazer:
+3 - Cadastrar produtos
+4 - Cadastrar Marcas
+                        
+                        ");
+                        string opcaoMenu = Console.ReadLine();
+                        switch (opcaoMenu)
                         {
-                        Console.WriteLine("Insira o código do produto: ");
-                        int CodigoProduto = int.Parse(Console.ReadLine());
+                            case "3":
+                                if (marca.Cadastrar(marca) == null)
+                                {
+                                    Console.WriteLine("É preciso existir uma marca cadastrada para cadastrar um produto!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Insira o código do produto: ");
+                                    int CodigoProduto = int.Parse(Console.ReadLine());
 
-                        Console.WriteLine("Insira o nome do produto: ");
-                        string NomeProduto = Console.ReadLine();
+                                    Console.WriteLine("Insira o nome do produto: ");
+                                    string NomeProduto = Console.ReadLine();
 
-                        Console.WriteLine("Insira o preço do produto: ");
-                        float PrecoProduto = float.Parse(Console.ReadLine());
+                                    Console.WriteLine("Insira o preço do produto: ");
+                                    float PrecoProduto = float.Parse(Console.ReadLine());
 
-                        Produto produto = new Produto();
+                                    Produto produto = new Produto();
 
-                        produto.Cadastrar(produto);
-                        produto.Listar();
+                                    produto.Cadastrar(produto);
+                                    produto.Listar();
+                                }
+                                opcaoValida = false;
+                                break;
+
+                            case "4":
+                                Console.WriteLine("Insira o código da marca: ");
+                                int Codigo = int.Parse(Console.ReadLine());
+
+                                Console.WriteLine("Insira o nome da marca: ");
+                                string NomeMarca = Console.ReadLine();
+
+                                marca.Cadastrar(marca);
+                                marca.ListarMarca();
+                                opcaoValida = false;
+
+                                break;
+                            default:
+                                Console.ForegroundColor = ConsoleColor.DarkRed;
+                                Console.WriteLine("OPÇÃO INVÁLIDA!!!");
+                                Console.ResetColor();
+                                opcaoValida = false;
+                                break;
                         }
                         break;
 
-                    case "3":
-                    Console.WriteLine("Insira o código da marca: ");
-                    int Codigo = int.Parse(Console.ReadLine());
-
-                    Console.WriteLine("Insira o nome da marca: ");
-                    string NomeMarca = Console.ReadLine();
-
-                    marca.Cadastrar(marca);
-                    marca.ListarMarca();
-
-                    break;
+                    case "0":
+                        Console.WriteLine("Obrigado por utilizar nosso sistema, volte sempre!");
+                        opcaoValida = true;
+                        Deslogar(usuario);
+                        break;
 
                     default:
                         Console.ForegroundColor = ConsoleColor.DarkRed;
