@@ -24,12 +24,7 @@ namespace ProjetoProdutos.Classes
         {
             if (!Logado)
             {
-                Console.WriteLine("Obrigado por utilizar em nosso sistema, para entrar");
-                Console.WriteLine("Digite seu e-mail: ");
-                string EmailUsuario = Console.ReadLine();
-                
-                Console.WriteLine("Digite sua senha: ");
-                string SenhaUsuario = Console.ReadLine();
+                Console.WriteLine("Bem vindo!");
             }
             return "O usuario logou";
         }
@@ -41,6 +36,8 @@ namespace ProjetoProdutos.Classes
 
         public Login()
         {
+            Marca marca = new Marca();
+            Usuario usuario = new Usuario();
             do
             {
 
@@ -54,8 +51,6 @@ O que deseja fazer?
             ");
 
                 string opcao = Console.ReadLine();
-                Marca marca = new Marca();
-                Usuario usuario = new Usuario();
 
                 switch (opcao)
                 {
@@ -75,6 +70,12 @@ O que deseja fazer?
                         break;
 
                     case "2":
+                        Console.WriteLine("Digite seu e-mail: ");
+                        EmailUsuario = Console.ReadLine();
+
+                        Console.WriteLine("Digite sua senha: ");
+                        SenhaUsuario = Console.ReadLine();
+
                         List<Usuario> usuarios = usuario.ListarUsuarios();
                         if (usuarios.Find(cadaLinha => cadaLinha.Email == usuario.Email).Senha == this.SenhaUsuario)
                         {
@@ -84,6 +85,7 @@ O que deseja fazer?
                         Escolha o que deseja fazer:
 3 - Cadastrar produtos
 4 - Cadastrar Marcas
+5 - Deslogar
                         
                         ");
                         string opcaoMenu = Console.ReadLine();
@@ -123,6 +125,11 @@ O que deseja fazer?
                                 marca.Cadastrar(marca);
                                 marca.ListarMarca();
                                 opcaoValida = false;
+
+                                break;
+
+                            case "5":
+                                Deslogar(usuario);
 
                                 break;
                             default:
