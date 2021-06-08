@@ -40,6 +40,7 @@ O que deseja fazer?
             ");
 
                 string opcao = Console.ReadLine();
+                Marca marca = new Marca();
 
                 switch (opcao)
                 {
@@ -59,6 +60,11 @@ O que deseja fazer?
                         break;
 
                     case "2":
+                        if (marca.Cadastrar(marca) == null)
+                        {
+                          Console.WriteLine("É preciso existir uma marca cadastrada para cadastrar um produto!");   
+                        }else
+                        {
                         Console.WriteLine("Insira o código do produto: ");
                         int CodigoProduto = int.Parse(Console.ReadLine());
 
@@ -72,9 +78,20 @@ O que deseja fazer?
 
                         produto.Cadastrar(produto);
                         produto.Listar();
+                        }
                         break;
+
                     case "3":
-                        break;
+                    Console.WriteLine("Insira o código da marca: ");
+                    int Codigo = int.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Insira o nome da marca: ");
+                    string NomeMarca = Console.ReadLine();
+
+                    marca.Cadastrar(marca);
+                    marca.ListarMarca();
+
+                    break;
 
                     default:
                         Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -83,7 +100,6 @@ O que deseja fazer?
                         opcaoValida = false;
                         break;
                 }
-                Marca marca = new Marca();
             } while (!opcaoValida);
 
         }
