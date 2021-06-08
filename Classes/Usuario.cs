@@ -11,7 +11,7 @@ namespace ProjetoProdutos.Classes
         public string Email { get; set; }
         public string Senha { get; set; }
         public DateTime DataCadastro { get; set; }
-        List<Usuario> usuarios = new List<Usuario>();
+        List<Usuario> ListaUsuarios = new List<Usuario>();
 
         public Usuario(){
             
@@ -26,13 +26,13 @@ namespace ProjetoProdutos.Classes
 
         public string Cadastrar(Usuario usuario)
         {
-            usuarios.Add(usuario);
+            ListaUsuarios.Add(usuario);
             return $"O usuário {Nome} foi cadastrado";
         }
 
         public string Deletar(Usuario usuario)
         {
-            usuarios.Remove(usuario);
+            ListaUsuarios.Remove(usuario);
             return $"O usuario {Nome} foi deletado";
         }
     }
