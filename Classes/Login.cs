@@ -8,8 +8,8 @@ namespace ProjetoProdutos.Classes
     {
         public bool Logado { get; set; }
         public bool opcaoValida { get; set; }
-        string EmailUsuario;
-        string SenhaUsuario;
+        public string EmailUsuario { get; set; }
+        public string SenhaUsuario { get; set; }
         Marca marca = new Marca();
         Usuario usuario = new Usuario();
         Produto produto = new Produto();
@@ -56,10 +56,10 @@ O que deseja fazer?
                         string NomeUsuario = Console.ReadLine();
 
                         Console.WriteLine("Insira o e-mail de usuário: ");
-                        string EmailUsuario = Console.ReadLine();
+                        EmailUsuario = Console.ReadLine();
 
                         Console.WriteLine("Insira a senha de usuário: ");
-                        string SenhaUsuario = Console.ReadLine();
+                        SenhaUsuario = Console.ReadLine();
 
                         Usuario usuario1 = new Usuario(123456, NomeUsuario, EmailUsuario, SenhaUsuario);
                         usuario.Cadastrar(new Usuario(123456, NomeUsuario, EmailUsuario, SenhaUsuario));
