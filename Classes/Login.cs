@@ -12,6 +12,7 @@ namespace ProjetoProdutos.Classes
         public bool opcaoValidaMenu = false;
         string EmailUsuario;
         string SenhaUsuario;
+        Usuario usuarioencontrar;
         Usuario usuario = new Usuario();
         public string Deslogar(Usuario usuario)
         {
@@ -99,7 +100,8 @@ namespace ProjetoProdutos.Classes
                         if (usuarios.Find(cadaLinha => cadaLinha.Email == EmailUsuario).Senha == this.EmailUsuario)
                         {
                             Logar(usuario);
-                        }
+                        } 
+                        
                         do
                         {
                             Console.WriteLine($@"
