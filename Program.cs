@@ -7,7 +7,8 @@ namespace ProjetoProdutos
     {
         static void Main(string[] args)
         {
-            Login login = new Login(1);
+
+            Login login = new Login();
         }
     }
 }

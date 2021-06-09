@@ -6,13 +6,13 @@ namespace ProjetoProdutos.Classes
 {
     public class Marca : IMarca
     {
-        public int Codigo; 
-        public string NomeMarca; 
+        public int Codigo;
+        public string NomeMarca;
         public DateTime DataCadastro;
         public List<Marca> ListaMarcas = new List<Marca>();
         public Marca()
         {
-            
+
         }
         public Marca(string _nomeMarca, int _codigo)
         {
@@ -23,22 +23,26 @@ namespace ProjetoProdutos.Classes
         public string Cadastrar(Marca marca)
         {
             ListaMarcas.Add(marca);
-            return "Marca cadastrada";
+            return $"A Marca {NomeMarca} foi cadastrada";
         }
 
         public string Deletar(Marca marca)
         {
             ListaMarcas.Remove(marca);
-            return $"A marca foi deletada";
+            return $"A marca {NomeMarca} foi deletada";
         }
 
         public List<Marca> ListarMarca()
         {
-            foreach (Marca item in ListaMarcas)
-            {
-                Console.WriteLine($"{item.Codigo} - {item.NomeMarca} - {item.DataCadastro}");
-            }
-            return ListaMarcas;
+        return ListaMarcas;     
+        }
+
+        // chamar no login lista
+        public int ListarCodigoM() {
+            return Codigo;
+        }
+        public Marca AcharMarca(string _nomeMarca) {
+            return ListaMarcas.Find(x => x.NomeMarca == _nomeMarca);
         }
     }
 }
