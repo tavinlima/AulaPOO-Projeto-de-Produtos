@@ -8,10 +8,11 @@ namespace ProjetoProdutos.Classes
     {
         public bool Logado = false;
         public bool opcaoValida = false;
+        public bool opcaoValidaMenu = false;
         string EmailUsuario;
         string SenhaUsuario;
         Usuario usuario = new Usuario();
-       
+
         public string Deslogar(Usuario usuario)
         {
             if (Logado)
@@ -19,7 +20,7 @@ namespace ProjetoProdutos.Classes
                 Logado = false;
                 Console.WriteLine("Obrigado por utilizar em nosso sistema, até breve!");
             }
-            return "O usuario deslogou";
+            return "O usuario deslogou, adeus!";
         }
 
         public string Logar(Usuario usuario)
@@ -27,21 +28,22 @@ namespace ProjetoProdutos.Classes
             do
             {
 
-            Console.WriteLine("Digite o e-mail: ");
-            EmailUsuario = Console.ReadLine();  
-            Console.WriteLine("Digite a senha: ");
-            SenhaUsuario = Console.ReadLine();
+                Console.WriteLine("Digite o e-mail: ");
+                EmailUsuario = Console.ReadLine();
+                Console.WriteLine("Digite a senha: ");
+                SenhaUsuario = Console.ReadLine();
 
-            if (SenhaUsuario == usuario.Senha && EmailUsuario == usuario.Email)
-            {
-              Logado = true;
-            }
-              return "O usuario logou";
+                if (SenhaUsuario == usuario.Senha && EmailUsuario == usuario.Email)
+                {
+                    Logado = true;
+                }
+                return "O usuario logou";
 
             } while (Logado == false);
         }
-        public Login(int ab){
-            
+        public Login(int ab)
+        {
+
         }
         public Login()
         {
@@ -71,7 +73,7 @@ O que deseja fazer?
                         string SenhaUsuario = Console.ReadLine();
 
                         DateTime DataCadastro = DateTime.Now;
-                
+
                         Usuario usuario1 = new Usuario(123456, NomeUsuario, EmailUsuario, SenhaUsuario);
                         usuario.Cadastrar(usuario1);
 
@@ -85,11 +87,13 @@ O que deseja fazer?
                         SenhaUsuario = Console.ReadLine();
 
                         List<Usuario> usuarios = usuario.ListarUsuarios();
-                        if (usuarios.Find(cadaLinha => cadaLinha.Email == usuario.Email).Senha == this.SenhaUsuario)
+                        if (usuarios.Find(cadaLinha => cadaLinha.Email == EmailUsuario).Senha == this.EmailUsuario)
                         {
                             Logar(usuario);
                         }
-                        Console.WriteLine($@"
+                        do
+                        {
+                            Console.WriteLine($@"
                         Escolha o que deseja fazer:
 3 - Cadastrar produtos
 4 - Deletar produto
@@ -102,75 +106,85 @@ O que deseja fazer?
 X - Deletar Usuário
                         
                         ");
-                        string opcaoMenu = Console.ReadLine();
+                            string opcaoMenu = Console.ReadLine().ToUpper();
+                            opcaoValida = true;
 
-                        switch (opcaoMenu)
-                        {
-                            case "3":
-                                 Marca marca1 = new Marca();
-                                 if (marca1.Cadastrar(marca1) == null)
-                                 {
-                                     Console.WriteLine("É preciso existir uma marca cadastrada para cadastrar um produto!");
-                                 }else {
-                                    Console.WriteLine("Insira o código do produto: ");
-                                    int CodigoProduto = int.Parse(Console.ReadLine());
+                            switch (opcaoMenu)
+                            {
+                                case "3":
+                                    Marca marca1 = new Marca();
+                                    if (marca1.Cadastrar(marca1) == null)
+                                    {
+                                        Console.WriteLine("É preciso existir uma marca cadastrada para cadastrar um produto!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Insira o código do produto: ");
+                                        int CodigoProduto = int.Parse(Console.ReadLine());
 
-                                    Console.WriteLine("Insira o nome do produto: ");
-                                    string NomeProduto = Console.ReadLine();
+                                        Console.WriteLine("Insira o nome do produto: ");
+                                        string NomeProduto = Console.ReadLine();
 
-                                    Console.WriteLine("Insira o preço do produto: ");
-                                    float PrecoProduto = float.Parse(Console.ReadLine());
+                                        Console.WriteLine("Insira o preço do produto: ");
+                                        float PrecoProduto = float.Parse(Console.ReadLine());
 
-                                    Produto produto1 = new Produto(CodigoProduto, NomeProduto, PrecoProduto);
+                                        Produto produto1 = new Produto(CodigoProduto, NomeProduto, PrecoProduto);
 
-                                    produto1.Cadastrar(produto1);
-                                    produto1.Listar();
-                                 }
-                                break;
+                                        produto1.Cadastrar(produto1);
+                                        produto1.Listar();
+                                        opcaoValidaMenu = true;
+                                    }
+                                    break;
 
-                            case "4":
-                                Produto deletarProduto = new Produto();
+                                case "4":
+                                    Produto deletarProduto = new Produto();
 
-                                Console.WriteLine("Qual o nome do produto que deseja deletar? ");
-                                deletarProduto.Nome = Console.ReadLine().ToUpper();
+                                    Console.WriteLine("Qual o nome do produto que deseja deletar? ");
+                                    deletarProduto.Nome = Console.ReadLine().ToUpper();
 
-                                deletarProduto.Deletar(deletarProduto);
-                                break;
+                                    deletarProduto.Deletar(deletarProduto);
+                                    opcaoValidaMenu = true;
+                                    break;
 
-                            case "5":
+                                case "5":
 
-                                Console.WriteLine("Insira o código da marca: ");
-                                int Codigo = int.Parse(Console.ReadLine());
+                                    Console.WriteLine("Insira o código da marca: ");
+                                    int Codigo = int.Parse(Console.ReadLine());
 
-                                Console.WriteLine("Insira o nome da marca: ");
-                                string NomeMarca = Console.ReadLine();
-                                Marca marca = new Marca(NomeMarca, Codigo);
+                                    Console.WriteLine("Insira o nome da marca: ");
+                                    string NomeMarca = Console.ReadLine();
+                                    Marca marca = new Marca(NomeMarca, Codigo);
 
-                                marca.Cadastrar(marca);
-                                marca.ListarMarca();
-                                break;
+                                    marca.Cadastrar(marca);
+                                    marca.ListarMarca();
+                                    opcaoValidaMenu = true;
+                                    break;
 
-                            case "6":
+                                case "6":
 
-                                 Marca deletarMarca = new Marca();
-                                 deletarMarca.Deletar(deletarMarca);
-                                break;
+                                    Marca deletarMarca = new Marca();
+                                    deletarMarca.Deletar(deletarMarca);
+                                    opcaoValidaMenu = true;
+                                    break;
 
-                            case "7":
-                                Deslogar(usuario);
-                                break;
+                                case "7":
+                                    Console.WriteLine(Deslogar(usuario));
+                                    opcaoValidaMenu = false;
+                                    break;
 
-                            case "X":
-                                usuario.Deletar(usuario);
-                                break;
+                                case "X":
+                                    Console.WriteLine(usuario.Deletar(usuario));
+                                    opcaoValidaMenu = false;
+                                    break;
 
-                            default:
-                                Console.ForegroundColor = ConsoleColor.DarkRed;
-                                Console.WriteLine("OPÇÃO INVÁLIDA!!!");
-                                Console.ResetColor();
-                                opcaoValida = false;
-                                break;
-                        }
+                                default:
+                                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                                    Console.WriteLine("OPÇÃO INVÁLIDA!!!");
+                                    Console.ResetColor();
+                                    opcaoValida = false;
+                                    break;
+                            }
+                        } while (opcaoValidaMenu);
                         break;
 
                     case "0":

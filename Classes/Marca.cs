@@ -6,13 +6,13 @@ namespace ProjetoProdutos.Classes
 {
     public class Marca : IMarca
     {
-        public int Codigo; 
-        public string NomeMarca; 
+        public int Codigo;
+        public string NomeMarca;
         public DateTime DataCadastro;
         public List<Marca> ListaMarcas = new List<Marca>();
         public Marca()
         {
-            
+
         }
         public Marca(string _nomeMarca, int _codigo)
         {
@@ -36,7 +36,13 @@ namespace ProjetoProdutos.Classes
         {
             foreach (Marca item in ListaMarcas)
             {
-                Console.WriteLine($"{item.Codigo} - {item.NomeMarca} - {item.DataCadastro}");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($@"
+Código:         {item.Codigo} 
+Nome:           {item.NomeMarca} 
+                
+Data da compra: {item.DataCadastro}");
+                Console.ResetColor();
             }
             return ListaMarcas;
         }
