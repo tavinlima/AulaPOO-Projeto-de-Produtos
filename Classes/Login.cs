@@ -6,8 +6,8 @@ namespace ProjetoProdutos.Classes
 {
     public class Login 
     {
-        public bool Logado { get; set; }
-        public bool opcaoValida { get; set; }
+        public bool Logado = false;
+        public bool opcaoValida = false;
         string EmailUsuario;
         string SenhaUsuario;
         public string Deslogar(Usuario usuario)
@@ -22,11 +22,21 @@ namespace ProjetoProdutos.Classes
 
         public string Logar(Usuario usuario)
         {
-            if (!Logado)
+            do
             {
-                Console.WriteLine("Bem vindo!");
+
+            Console.WriteLine("Digite o e-mail: ");
+            EmailUsuario = Console.ReadLine();  
+            Console.WriteLine("Digite a senha: ");
+            SenhaUsuario = Console.ReadLine();
+
+            if (SenhaUsuario == usuario.Senha && EmailUsuario == usuario.Email)
+            {
+              Logado = true;
             }
-            return "O usuario logou";
+              return "O usuario logou";
+
+            } while (Logado == false);
         }
 
         public Login(int ab){
@@ -60,9 +70,10 @@ O que deseja fazer?
                         Console.WriteLine("Insira a senha de usuário: ");
                         string SenhaUsuario = Console.ReadLine();
 
+                        DateTime DataCadastro = DateTime.Now;
+                
                         Usuario usuario1 = new Usuario(123456, NomeUsuario, EmailUsuario, SenhaUsuario);
                         usuario.Cadastrar(usuario1);
-                        opcaoValida = false;
                         break;
 
                     case "2":
