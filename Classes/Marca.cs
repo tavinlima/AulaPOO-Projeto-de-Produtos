@@ -10,9 +10,15 @@ namespace ProjetoProdutos.Classes
        public string NomeMarca { get; set; }
        public DateTime DataCadastro { get; set; } 
         List<Marca> marcas = new List<Marca>();
-        Marca novaMarca = new Marca();
-        
-        public Marca(){}
+
+        // public Marca()
+        // {
+
+        // }
+        public Marca()
+        {
+            
+        }
         public Marca(string _nomeMarca, int _codigo){
             NomeMarca = _nomeMarca;
             Codigo = _codigo;

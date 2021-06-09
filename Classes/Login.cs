@@ -4,7 +4,7 @@ using ProjetoProdutos.Interfaces;
 
 namespace ProjetoProdutos.Classes
 {
-    public class Login : ILogin
+    public class Login 
     {
         public bool Logado { get; set; }
         public bool opcaoValida { get; set; }
@@ -29,18 +29,14 @@ namespace ProjetoProdutos.Classes
             return "O usuario logou";
         }
 
-        void ILogin.Login()
-        {
-            throw new NotImplementedException();
+        public Login(int ab){
+            
         }
-
         public Login()
         {
-            Marca marca = new Marca();
             Usuario usuario = new Usuario();
             do
             {
-
                 Console.WriteLine($@"
 O que deseja fazer?
 
@@ -92,6 +88,7 @@ O que deseja fazer?
                         switch (opcaoMenu)
                         {
                             case "3":
+                                Marca marca = new Marca();
                                 if (marca.Cadastrar(marca) == null)
                                 {
                                     Console.WriteLine("É preciso existir uma marca cadastrada para cadastrar um produto!");
@@ -122,8 +119,9 @@ O que deseja fazer?
                                 Console.WriteLine("Insira o nome da marca: ");
                                 string NomeMarca = Console.ReadLine();
 
-                                marca.Cadastrar(marca);
-                                marca.ListarMarca();
+                                Marca mc2 = new Marca(NomeMarca, Codigo);
+                                mc2.Cadastrar(mc2);
+                                mc2.ListarMarca();
                                 opcaoValida = false;
 
                                 break;
