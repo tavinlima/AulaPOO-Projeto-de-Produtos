@@ -1,5 +1,4 @@
 ﻿using System;
-using ProjetoProdutos.Classes;
 
 namespace ProjetoProdutos
 {
@@ -7,10 +6,10 @@ namespace ProjetoProdutos
     {
         static void Main(string[] args)
         {
-         
+            Console.WriteLine("Hello World!");
         }
-
-        
-        
     }
 }
+                
+    
+
