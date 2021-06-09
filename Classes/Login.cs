@@ -4,7 +4,7 @@ using ProjetoProdutos.Interfaces;
 
 namespace ProjetoProdutos.Classes
 {
-    public class Login : ILogin
+    public class Login 
     {
         public bool Logado { get; set; }
         public bool opcaoValida { get; set; }
@@ -37,11 +37,14 @@ namespace ProjetoProdutos.Classes
 
         // }
 
+        public Login(int ab){
+            
+        }
         public Login()
         {
+            Usuario usuario = new Usuario();
             do
             {
-
                 Console.WriteLine($@"
 O que deseja fazer?
 
@@ -99,6 +102,7 @@ X - Deletar Usuário
                         switch (opcaoMenu)
                         {
                             case "3":
+                                Marca marca = new Marca();
                                 if (marca.Cadastrar(marca) == null)
                                 {
                                     Console.WriteLine("É preciso existir uma marca cadastrada para cadastrar um produto!");
@@ -140,8 +144,8 @@ X - Deletar Usuário
 
                                 Marca marca1 = new Marca(NomeMarca, Codigo);
 
-                                marca.Cadastrar(new Marca(NomeMarca, Codigo));
-                                marca.ListarMarca();
+                                marca1.Cadastrar(new Marca(NomeMarca, Codigo));
+                                marca1.ListarMarca();
                                 opcaoValida = false;
 
                                 break;
