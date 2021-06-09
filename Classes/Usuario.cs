@@ -6,7 +6,7 @@ namespace ProjetoProdutos.Classes
 {
     public class Usuario : IUsuario
     {
-        private int Codigo { get; set; }
+         private int Codigo { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
@@ -37,6 +37,11 @@ namespace ProjetoProdutos.Classes
             return $"O usuario {Nome} foi deletado";
         }
         public List<Usuario> ListarUsuarios(){
+
+             foreach (Usuario item in ListaUsuarios)
+            {
+               Console.WriteLine($"{item.Nome} = {item.Email} - {item.Codigo}");   
+            } 
             return ListaUsuarios;
         }
     }

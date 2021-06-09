@@ -11,8 +11,7 @@ namespace ProjetoProdutos.Classes
         public float Preco { get; set; }
         public DateTime DataCadastroProduto { get; set; }
         public List<Produto> ListaProdutos = new List<Produto>();
-        Produto novoProduto = new Produto();
-
+     
         public Produto()
         {
         }
@@ -40,7 +39,14 @@ namespace ProjetoProdutos.Classes
         {
             foreach (Produto item in ListaProdutos)
             {
-                Console.WriteLine($"{item.CodigoProduto} - {item.NomeProduto} - {item.DataCadastroProduto}");
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($@"
+Código:         {item.CodigoProduto}  
+Nome:           {item.NomeProduto} 
+Preço:          {item.Preco :C2}
+
+Data de compra: {item.DataCadastroProduto}");
+                Console.ResetColor();
             }
             return ListaProdutos;
         }
