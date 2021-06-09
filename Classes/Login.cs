@@ -156,7 +156,16 @@ X - Deletar Usuário
                                     Marca marca = new Marca(NomeMarca, Codigo);
 
                                     marca.Cadastrar(marca);
-                                    marca.ListarMarca();
+                                    // marca.ListarMarca();
+                                    foreach (Marca item in marca.ListarMarca())
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($@"
+Código:         {item.Codigo}  
+Nome:           {item.NomeMarca} 
+");
+                Console.ResetColor();
+                                    }
                                     opcaoValidaMenu = true;
                                     break;
 
@@ -181,7 +190,7 @@ X - Deletar Usuário
                                     Console.ForegroundColor = ConsoleColor.DarkRed;
                                     Console.WriteLine("OPÇÃO INVÁLIDA!!!");
                                     Console.ResetColor();
-                                    opcaoValida = false;
+                                    opcaoValidaMenu = true;
                                     break;
                             }
                         } while (opcaoValidaMenu);
