@@ -6,12 +6,12 @@ namespace ProjetoProdutos.Classes
 {
     public class Usuario : IUsuario
     {
-        public int Codigo { get; set; }
+        private int Codigo { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
         public DateTime DataCadastro { get; set; }
-        List<Usuario> ListaUsuarios = new List<Usuario>();
+        public List<Usuario> ListaUsuarios = new List<Usuario>();
 
         public Usuario(){
             
@@ -35,6 +35,9 @@ namespace ProjetoProdutos.Classes
         {
             ListaUsuarios.Remove(usuario);
             return $"O usuario {Nome} foi deletado";
+        }
+        public List<Usuario> ListarUsuarios(){
+            return ListaUsuarios;
         }
     }
 }
