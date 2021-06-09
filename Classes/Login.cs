@@ -31,18 +31,11 @@ namespace ProjetoProdutos.Classes
             }
             return "O usuario logou";
         }
-
-        // public Login()
-        // {
-
-        // }
-
         public Login(int ab){
             
         }
         public Login()
         {
-            Usuario usuario = new Usuario();
             do
             {
                 Console.WriteLine($@"
@@ -102,7 +95,7 @@ X - Deletar Usuário
                         switch (opcaoMenu)
                         {
                             case "3":
-                                Marca marca = new Marca();
+                                // Marca marca = new Marca();
                                 if (marca.Cadastrar(marca) == null)
                                 {
                                     Console.WriteLine("É preciso existir uma marca cadastrada para cadastrar um produto!");
