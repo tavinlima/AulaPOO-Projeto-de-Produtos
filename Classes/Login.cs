@@ -4,12 +4,15 @@ using ProjetoProdutos.Interfaces;
 
 namespace ProjetoProdutos.Classes
 {
-    public class Login 
+    public class Login : ILogin
     {
         public bool Logado = false;
         public bool opcaoValida = false;
         string EmailUsuario;
         string SenhaUsuario;
+        Marca marca = new Marca();
+        Usuario usuario = new Usuario();
+        Produto produto = new Produto();
         public string Deslogar(Usuario usuario)
         {
             if (Logado)
@@ -38,13 +41,11 @@ namespace ProjetoProdutos.Classes
 
             } while (Logado == false);
         }
-
         public Login(int ab){
             
         }
         public Login()
         {
-            Usuario usuario = new Usuario();
             do
             {
                 Console.WriteLine($@"
@@ -74,6 +75,7 @@ O que deseja fazer?
                 
                         Usuario usuario1 = new Usuario(123456, NomeUsuario, EmailUsuario, SenhaUsuario);
                         usuario.Cadastrar(usuario1);
+
                         break;
 
                     case "2":
@@ -91,15 +93,21 @@ O que deseja fazer?
                         Console.WriteLine($@"
                         Escolha o que deseja fazer:
 3 - Cadastrar produtos
-4 - Cadastrar Marcas
-5 - Deslogar
+4 - Deletar produto
+
+5 - Cadastrar Marcas
+6 - Deletar marcas
+
+7 - Deslogar
+
+X - Deletar Usuário
                         
                         ");
                         string opcaoMenu = Console.ReadLine();
                         switch (opcaoMenu)
                         {
                             case "3":
-                                Marca marca = new Marca();
+                                // Marca marca = new Marca();
                                 if (marca.Cadastrar(marca) == null)
                                 {
                                     Console.WriteLine("É preciso existir uma marca cadastrada para cadastrar um produto!");
@@ -115,32 +123,52 @@ O que deseja fazer?
                                     Console.WriteLine("Insira o preço do produto: ");
                                     float PrecoProduto = float.Parse(Console.ReadLine());
 
-                                    Produto produto = new Produto();
+                                    Produto produto1 = new Produto(CodigoProduto, NomeProduto, PrecoProduto);
 
-                                    produto.Cadastrar(produto);
+                                    produto.Cadastrar(new Produto(CodigoProduto, NomeProduto, PrecoProduto));
                                     produto.Listar();
                                 }
                                 opcaoValida = false;
                                 break;
 
                             case "4":
+                                Produto deletarProduto = new Produto();
+
+                                Console.WriteLine("Qual o nome do produto que deseja deletar? ");
+                                deletarProduto.Nome = Console.ReadLine().ToUpper();
+
+                                deletarProduto.Deletar(deletarProduto);
+                                break;
+
+                            case "5":
                                 Console.WriteLine("Insira o código da marca: ");
                                 int Codigo = int.Parse(Console.ReadLine());
 
                                 Console.WriteLine("Insira o nome da marca: ");
                                 string NomeMarca = Console.ReadLine();
 
-                                Marca mc2 = new Marca(NomeMarca, Codigo);
-                                mc2.Cadastrar(mc2);
-                                mc2.ListarMarca();
+                                Marca marca1 = new Marca(NomeMarca, Codigo);
+
+                                marca1.Cadastrar(new Marca(NomeMarca, Codigo));
+                                marca1.ListarMarca();
                                 opcaoValida = false;
 
                                 break;
 
-                            case "5":
-                                Deslogar(usuario);
+                            case "6":
+                                Marca deletarMarca = new Marca();
 
+                                deletarMarca.Deletar(deletarMarca);
                                 break;
+
+                            case "7":
+                                Deslogar(usuario);
+                                break;
+
+                            case "X":
+                                usuario.Deletar(usuario);
+                                break;
+
                             default:
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine("OPÇÃO INVÁLIDA!!!");

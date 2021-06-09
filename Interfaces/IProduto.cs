@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using ProjetoProdutos.Classes;
 
 namespace ProjetoProdutos.Interfaces
@@ -6,7 +7,7 @@ namespace ProjetoProdutos.Interfaces
     {
        
         string Cadastrar(Produto produto);
-        void Listar(); 
+        List<Produto> Listar(); 
         string Deletar(Produto produto);  
     }
 }

@@ -6,7 +6,7 @@ namespace ProjetoProdutos.Classes
 {
     public class Usuario : IUsuario
     {
-        private int Codigo { get; set; }
+         private int Codigo { get; set; }
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
