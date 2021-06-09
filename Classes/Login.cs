@@ -10,9 +10,8 @@ namespace ProjetoProdutos.Classes
         public bool opcaoValida = false;
         string EmailUsuario;
         string SenhaUsuario;
-        Marca marca = new Marca();
         Usuario usuario = new Usuario();
-        Produto produto = new Produto();
+       
         public string Deslogar(Usuario usuario)
         {
             if (Logado)
@@ -104,16 +103,15 @@ X - Deletar Usuário
                         
                         ");
                         string opcaoMenu = Console.ReadLine();
+
                         switch (opcaoMenu)
                         {
                             case "3":
-                                // Marca marca = new Marca();
-                                if (marca.Cadastrar(marca) == null)
-                                {
-                                    Console.WriteLine("É preciso existir uma marca cadastrada para cadastrar um produto!");
-                                }
-                                else
-                                {
+                                 Marca marca1 = new Marca();
+                                 if (marca1.Cadastrar(marca1) == null)
+                                 {
+                                     Console.WriteLine("É preciso existir uma marca cadastrada para cadastrar um produto!");
+                                 }else {
                                     Console.WriteLine("Insira o código do produto: ");
                                     int CodigoProduto = int.Parse(Console.ReadLine());
 
@@ -125,10 +123,9 @@ X - Deletar Usuário
 
                                     Produto produto1 = new Produto(CodigoProduto, NomeProduto, PrecoProduto);
 
-                                    produto.Cadastrar(new Produto(CodigoProduto, NomeProduto, PrecoProduto));
-                                    produto.Listar();
-                                }
-                                opcaoValida = false;
+                                    produto1.Cadastrar(produto1);
+                                    produto1.Listar();
+                                 }
                                 break;
 
                             case "4":
@@ -141,24 +138,22 @@ X - Deletar Usuário
                                 break;
 
                             case "5":
+
                                 Console.WriteLine("Insira o código da marca: ");
                                 int Codigo = int.Parse(Console.ReadLine());
 
                                 Console.WriteLine("Insira o nome da marca: ");
                                 string NomeMarca = Console.ReadLine();
+                                Marca marca = new Marca(NomeMarca, Codigo);
 
-                                Marca marca1 = new Marca(NomeMarca, Codigo);
-
-                                marca1.Cadastrar(new Marca(NomeMarca, Codigo));
-                                marca1.ListarMarca();
-                                opcaoValida = false;
-
+                                marca.Cadastrar(marca);
+                                marca.ListarMarca();
                                 break;
 
                             case "6":
-                                Marca deletarMarca = new Marca();
 
-                                deletarMarca.Deletar(deletarMarca);
+                                 Marca deletarMarca = new Marca();
+                                 deletarMarca.Deletar(deletarMarca);
                                 break;
 
                             case "7":

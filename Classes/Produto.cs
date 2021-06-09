@@ -11,8 +11,7 @@ namespace ProjetoProdutos.Classes
         public float Preco { get; set; }
         public DateTime DataCadastroProduto { get; set; }
         public List<Produto> ListaProdutos = new List<Produto>();
-        Produto novoProduto = new Produto();
-
+     
         public Produto()
         {
         }

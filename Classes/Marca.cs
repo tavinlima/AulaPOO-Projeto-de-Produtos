@@ -6,13 +6,14 @@ namespace ProjetoProdutos.Classes
 {
     public class Marca : IMarca
     {
-        public int Codigo { get; set; }
-        public string NomeMarca { get; set; }
-        public DateTime DataCadastro { get; set; }
+        public int Codigo; 
+        public string NomeMarca; 
+        public DateTime DataCadastro;
         public List<Marca> ListaMarcas = new List<Marca>();
-        Marca novaMarca = new Marca();
-
-        public Marca() { }
+        public Marca()
+        {
+            
+        }
         public Marca(string _nomeMarca, int _codigo)
         {
             NomeMarca = _nomeMarca;
