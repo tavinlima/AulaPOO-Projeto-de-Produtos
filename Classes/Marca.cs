@@ -34,6 +34,7 @@ namespace ProjetoProdutos.Classes
 
         public List<Marca> ListarMarca()
         {
+            
         return ListaMarcas;     
         }
 
@@ -43,6 +44,7 @@ namespace ProjetoProdutos.Classes
         }
         public Marca AcharMarca(string _nomeMarca) {
             return ListaMarcas.Find(x => x.NomeMarca == _nomeMarca);
+
         }
     }
 }

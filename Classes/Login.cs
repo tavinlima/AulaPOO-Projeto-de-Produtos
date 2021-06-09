@@ -95,8 +95,8 @@ namespace ProjetoProdutos.Classes
                         SenhaUsuario = Console.ReadLine();
 
                         List<Usuario> usuarios = usuario.ListarUsuarios();
-                        Usuario usuario2 = new Usuario();
-                         if (usuarios.Find(cadaLinha => cadaLinha.Email == EmailUsuario).Senha == this.EmailUsuario)
+
+                        if (usuarios.Find(cadaLinha => cadaLinha.Email == EmailUsuario).Senha == this.EmailUsuario)
                         {
                             Logar(usuario);
                         }
@@ -119,15 +119,12 @@ namespace ProjetoProdutos.Classes
 |                             |
 | X - Deletar Usuário         |
 |=============================|
-                        
                         ");
                             string opcaoMenu = Console.ReadLine().ToUpper();
                             opcaoValida = true;
 
                             switch (opcaoMenu)
-                            {
-                              
-                           
+                            {     
                                 case "5":
 
                                     Console.WriteLine("Qual marca queres cadastrar?");
