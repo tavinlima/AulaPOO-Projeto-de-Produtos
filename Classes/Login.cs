@@ -11,7 +11,8 @@ namespace ProjetoProdutos.Classes
         string EmailUsuario;
         string SenhaUsuario;
         Usuario usuario = new Usuario();
-       
+        bool teste = false;
+        
         public string Deslogar(Usuario usuario)
         {
             if (Logado)
@@ -42,67 +43,76 @@ namespace ProjetoProdutos.Classes
         }
         public Login(int ab){
             
-        }
-        public Login()
-        {
-            do
-            {
-                Console.WriteLine($@"
-O que deseja fazer?
+//         }
+//         public Login()
+//         {
+//             do
+//             {
+//                 Console.WriteLine($@"
+// O que deseja fazer?
 
-1 - Cadastrar usuário
-2 - Fazer Login
+// 1 - Cadastrar usuário
+// 2 - Fazer Login
 
-0 - Sair do Sistema
-            ");
+// 0 - Sair do Sistema
+//             ");
 
-                string opcao = Console.ReadLine();
+//                 string opcao = Console.ReadLine();
 
-                switch (opcao)
-                {
-                    case "1":
-                        Console.WriteLine("Insira o nome de usuário: ");
-                        string NomeUsuario = Console.ReadLine();
+//                 switch (opcao)
+//                 {
+//                     case "1":
+//                         Console.WriteLine("Insira o nome de usuário: ");
+//                         string NomeUsuario = Console.ReadLine();
 
-                        Console.WriteLine("Insira o e-mail de usuário: ");
-                        string EmailUsuario = Console.ReadLine();
+//                         Console.WriteLine("Insira o e-mail de usuário: ");
+//                         string EmailUsuario = Console.ReadLine();
 
-                        Console.WriteLine("Insira a senha de usuário: ");
-                        string SenhaUsuario = Console.ReadLine();
+//                         Console.WriteLine("Insira a senha de usuário: ");
+//                         string SenhaUsuario = Console.ReadLine();
 
-                        DateTime DataCadastro = DateTime.Now;
+//                         DateTime DataCadastro = DateTime.Now;
                 
-                        Usuario usuario1 = new Usuario(123456, NomeUsuario, EmailUsuario, SenhaUsuario);
-                        usuario.Cadastrar(usuario1);
+//                         Usuario usuario1 = new Usuario(123456, NomeUsuario, EmailUsuario, SenhaUsuario);
+//                         usuario.Cadastrar(usuario1);
 
-                        break;
+//                         break;
 
-                    case "2":
-                        Console.WriteLine("Digite seu e-mail: ");
-                        EmailUsuario = Console.ReadLine();
+//                     case "2":
+//                         Console.WriteLine("Digite seu e-mail: ");
+//                         EmailUsuario = Console.ReadLine();
 
-                        Console.WriteLine("Digite sua senha: ");
-                        SenhaUsuario = Console.ReadLine();
+//                         Console.WriteLine("Digite sua senha: ");
+//                         SenhaUsuario = Console.ReadLine();
 
-                        List<Usuario> usuarios = usuario.ListarUsuarios();
-                        if (usuarios.Find(cadaLinha => cadaLinha.Email == usuario.Email).Senha == this.SenhaUsuario)
-                        {
-                            Logar(usuario);
-                        }
+//                         List<Usuario> usuarios = usuario.ListarUsuarios();
+//                         Usuario usuario2 = new Usuario();
+//                         if (usuarios.Find(cadaLinha => cadaLinha.Email == usuario.Email).Senha == this.SenhaUsuario)
+//                         {
+//                             Logar(usuario);
+//                         }
+
+                      
+do
+{
+    
+
                         Console.WriteLine($@"
                         Escolha o que deseja fazer:
 3 - Cadastrar produtos
 4 - Deletar produto
+11 - Listar Produtos
 
 5 - Cadastrar Marcas
 6 - Deletar marcas
+M - Listar Marcas
 
 7 - Deslogar
 
 X - Deletar Usuário
                         
                         ");
-                        string opcaoMenu = Console.ReadLine();
+                        string opcaoMenu = Console.ReadLine().ToLower();
 
                         switch (opcaoMenu)
                         {
@@ -125,6 +135,7 @@ X - Deletar Usuário
 
                                     produto1.Cadastrar(produto1);
                                     produto1.Listar();
+                                    produto1.controle++;
                                  }
                                 break;
 
@@ -160,10 +171,13 @@ X - Deletar Usuário
                                 Deslogar(usuario);
                                 break;
 
+                            case "8":
+                            break;
+
                             case "X":
                                 usuario.Deletar(usuario);
                                 break;
-
+                            
                             default:
                                 Console.ForegroundColor = ConsoleColor.DarkRed;
                                 Console.WriteLine("OPÇÃO INVÁLIDA!!!");
@@ -171,22 +185,23 @@ X - Deletar Usuário
                                 opcaoValida = false;
                                 break;
                         }
-                        break;
+} while (!teste);
+            //             break;
 
-                    case "0":
-                        Console.WriteLine("Obrigado por utilizar nosso sistema, volte sempre!");
-                        opcaoValida = true;
-                        Deslogar(usuario);
-                        break;
+            //         case "0":
+            //             Console.WriteLine("Obrigado por utilizar nosso sistema, volte sempre!");
+            //             opcaoValida = true;
+            //             Deslogar(usuario);
+            //             break;
 
-                    default:
-                        Console.ForegroundColor = ConsoleColor.DarkRed;
-                        Console.WriteLine("OPÇÃO INVÁLIDA!!!");
-                        Console.ResetColor();
-                        opcaoValida = false;
-                        break;
-                }
-            } while (!opcaoValida);
+            //         default:
+            //             Console.ForegroundColor = ConsoleColor.DarkRed;
+            //             Console.WriteLine("OPÇÃO INVÁLIDA!!!");
+            //             Console.ResetColor();
+            //             opcaoValida = false;
+            //             break;
+            //     }
+            // } while (!opcaoValida);
 
         }
     }

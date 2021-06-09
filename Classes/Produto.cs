@@ -10,8 +10,9 @@ namespace ProjetoProdutos.Classes
         public string NomeProduto { get; set; }
         public float Preco { get; set; }
         public DateTime DataCadastroProduto { get; set; }
+        public int controle;
         public List<Produto> ListaProdutos = new List<Produto>();
-     
+
         public Produto()
         {
         }
@@ -29,19 +30,19 @@ namespace ProjetoProdutos.Classes
             return "O produto foi cadastrado";
         }
 
-        public string Deletar(Produto produto)
-        {
-            ListaProdutos.Remove(produto);
-            return "O produto foi deletado";
-        }
-
         public List<Produto> Listar()
         {
             foreach (Produto item in ListaProdutos)
             {
                 Console.WriteLine($"{item.CodigoProduto} - {item.NomeProduto} - {item.DataCadastroProduto}");
+                controle++;
             }
             return ListaProdutos;
+        }
+        public string Deletar(Produto produto)
+        {
+            ListaProdutos.Remove(produto);
+            return "O produto foi deletado";
         }
 
     }
