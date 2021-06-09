@@ -9,31 +9,40 @@ namespace ProjetoProdutos.Classes
         public int CodigoProduto { get; set; }
         public string NomeProduto { get; set; }
         public float Preco { get; set; }
-        public DateTime DataCadastroProduto { get; set; } 
-
-        Usuario n = new Usuario();
-        Marca mc = new Marca();
-        List<Produto> produtos = new List<Produto>();
+        public DateTime DataCadastroProduto { get; set; }
+        public List<Produto> ListaProdutos = new List<Produto>();
         Produto novoProduto = new Produto();
-        
-         public string Cadastrar(Produto produto)
+
+        public Produto()
         {
-            produtos.Add(produto);
+        }
+        public Produto(int _codigo, string _nome, float _preco)
+        {
+            this.CodigoProduto = _codigo;
+            this.NomeProduto = _nome;
+            this.Preco = _preco;
+            DataCadastroProduto = DateTime.Now;
+        }
+
+        public string Cadastrar(Produto produto)
+        {
+            ListaProdutos.Add(produto);
             return "O produto foi cadastrado";
         }
-        
-         public string Deletar(Produto produto)
+
+        public string Deletar(Produto produto)
         {
-            produtos.Remove(produto);
+            ListaProdutos.Remove(produto);
             return "O produto foi deletado";
         }
 
-        public void Listar()
+        public List<Produto> Listar()
         {
-           foreach (Produto item in produtos)
+            foreach (Produto item in ListaProdutos)
             {
-               Console.WriteLine($"{item.CodigoProduto} - {item.NomeProduto} - {item.DataCadastroProduto}");   
-            } 
+                Console.WriteLine($"{item.CodigoProduto} - {item.NomeProduto} - {item.DataCadastroProduto}");
+            }
+            return ListaProdutos;
         }
 
     }
