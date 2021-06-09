@@ -4,7 +4,7 @@ using ProjetoProdutos.Interfaces;
 
 namespace ProjetoProdutos.Classes
 {
-    public class Login 
+    public class Login : ILogin
     {
         public bool Logado { get; set; }
         public bool opcaoValida { get; set; }
