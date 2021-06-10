@@ -144,60 +144,6 @@ namespace ProjetoProdutos.Classes
                                         string continuar = "s";
                                         float precoProd;
 
-<<<<<<< HEAD
-                                    deletarProduto.Deletar(deletarProduto);
-                                    opcaoValidaMenu = true;
-                                    break;
-
-                                case "5":
-
-                                    Console.WriteLine("Insira o código da marca: ");
-                                    int Codigo = int.Parse(Console.ReadLine());
-
-                                    Console.WriteLine("Insira o nome da marca: ");
-                                    string NomeMarca = Console.ReadLine();
-                                    Marca marca = new Marca(NomeMarca, Codigo);
-
-                                    marca.Cadastrar(marca);
-                                    // marca.ListarMarca();
-                                    foreach (Marca item in marca.ListarMarca())
-                                    {
-                                        Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine($@"
-Código:         {item.Codigo}  
-Nome:           {item.NomeMarca} 
-");
-                Console.ResetColor();
-                                    }
-                                    opcaoValidaMenu = true;
-                                    break;
-
-                                case "6":
-
-                                    Marca deletarMarca = new Marca();
-                                    deletarMarca.Deletar(deletarMarca);
-                                    opcaoValidaMenu = true;
-                                    break;
-
-                                case "7":
-                                    Console.WriteLine(Deslogar(usuario));
-                                    opcaoValidaMenu = false;
-                                    break;
-
-                                case "X":
-                                    Console.WriteLine(usuario.Deletar(usuario));
-                                    opcaoValidaMenu = false;
-                                    break;
-
-                                default:
-                                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                                    Console.WriteLine("OPÇÃO INVÁLIDA!!!");
-                                    Console.ResetColor();
-                                    opcaoValidaMenu = true;
-                                    break;
-                            }
-                        } while (opcaoValidaMenu);
-=======
                                         Console.WriteLine("Insira o nome do produto: ");
                                         string nomeProd = Console.ReadLine().ToUpper().Trim();
 
@@ -389,7 +335,6 @@ Nome:           {item.NomeMarca}
                             Console.ResetColor();
                             opcaoValida = false;
                         }
->>>>>>> b529e5ab6001825bd2a6d577ea4ec4de44c0dfb3
                         break;
 
                     case "0":
