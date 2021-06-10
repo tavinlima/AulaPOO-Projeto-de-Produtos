@@ -19,7 +19,7 @@ namespace ProjetoProdutos.Classes
             if (Logado)
             {
                 Logado = false;
-                Console.WriteLine("Obrigado por utilizar em nosso sistema, até breve!");
+                Console.WriteLine("Obrigado por utilizar nosso sistema, até breve!");
             }
             return "O usuario deslogou, adeus!";
         }
