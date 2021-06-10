@@ -36,6 +36,7 @@ namespace ProjetoProdutos.Classes
             ListaUsuarios.Remove(usuario);
             return $"O usuario {Nome} foi deletado";
         }
+
         public List<Usuario> ListarUsuarios(){
 
              foreach (Usuario item in ListaUsuarios)
@@ -43,6 +44,9 @@ namespace ProjetoProdutos.Classes
                Console.WriteLine($"{item.Nome} = {item.Email} - {item.Codigo}");   
             } 
             return ListaUsuarios;
+        }
+         public Usuario AcharEmail(string email) {
+            return ListaUsuarios.Find(x => x.Email == email);
         }
     }
 }
