@@ -126,16 +126,6 @@ namespace ProjetoProdutos.Classes
 
                                 switch (opcaoMenu)
                                 {
-                                    case "5":
-
-                                        Console.WriteLine("Qual marca queres cadastrar?");
-                                        marcaName = Console.ReadLine().ToUpper();
-                                        MarcaAd += 1;
-
-                                        Console.WriteLine(marcaR.Cadastrar(new Marca(marcaName, MarcaAd)));
-                                        opcaoValidaMenu = true;
-                                        opcaoValida = false;
-                                        break;
 
                                     case "3":
 
@@ -196,44 +186,7 @@ namespace ProjetoProdutos.Classes
                                         } while (continuar != "n");
                                         break;
 
-                                    case "6":
-
-                                        Console.WriteLine("Qual o código da marca que você quer deletar? ");
-                                        string marcaCodigoS = Console.ReadLine();
-
-                                        int marcaDeletar;
-                                        BoolDelete = int.TryParse(marcaCodigoS, out marcaDeletar);
-
-                                        if (BoolDelete)
-                                        {
-                                            marcaDeletar = int.Parse(marcaCodigoS);
-                                            if (marcaDeletar == 0)
-                                            {
-                                                Console.WriteLine("Você não removeu nenhuma das marcas!");
-                                            }
-                                            else
-                                            {
-                                                if (marcaDeletar > MarcaAd || marcaDeletar < 0)
-                                                {
-                                                    Console.WriteLine("\nCódigo Inválido!");
-                                                }
-                                                else
-                                                {
-                                                    Console.WriteLine(marcaR.Deletar(marcaR.ListarMarca().Find(x => x.ListarCodigoM() == marcaDeletar)));
-                                                }
-                                            }
-                                        }
-                                        else
-                                        {
-
-                                            Console.WriteLine("Você não possui marcas cadastradas para poder deletar");
-                                        }
-
-                                        opcaoValidaMenu = true;
-                                        opcaoValida = false;
-                                        break;
-
-                                    case "4":
+                                        case "4":
                                         if (marcaR.ListarMarca().Count != 0)
                                         {
                                             Console.Write("Qual o código do produto que você quer deletar? ");
@@ -271,9 +224,52 @@ namespace ProjetoProdutos.Classes
                                         }
                                         break;
 
-                                    case "9":
-                                        Console.WriteLine(Deslogar(usuario));
-                                        opcaoValidaMenu = false;
+                                    case "5":
+
+                                        Console.WriteLine("Qual marca queres cadastrar?");
+                                        marcaName = Console.ReadLine().ToUpper();
+                                        MarcaAd += 1;
+
+                                        Console.WriteLine(marcaR.Cadastrar(new Marca(marcaName, MarcaAd)));
+                                        opcaoValidaMenu = true;
+                                        opcaoValida = false;
+                                        break;
+
+                                    case "6":
+
+                                        Console.WriteLine("Qual o código da marca que você quer deletar? ");
+                                        string marcaCodigoS = Console.ReadLine();
+
+                                        int marcaDeletar;
+                                        BoolDelete = int.TryParse(marcaCodigoS, out marcaDeletar);
+
+                                        if (BoolDelete)
+                                        {
+                                            marcaDeletar = int.Parse(marcaCodigoS);
+                                            if (marcaDeletar == 0)
+                                            {
+                                                Console.WriteLine("Você não removeu nenhuma das marcas!");
+                                            }
+                                            else
+                                            {
+                                                if (marcaDeletar > MarcaAd || marcaDeletar < 0)
+                                                {
+                                                    Console.WriteLine("\nCódigo Inválido!");
+                                                }
+                                                else
+                                                {
+                                                    Console.WriteLine(marcaR.Deletar(marcaR.ListarMarca().Find(x => x.ListarCodigoM() == marcaDeletar)));
+                                                }
+                                            }
+                                        }
+                                        else
+                                        {
+
+                                            Console.WriteLine("Você não possui marcas cadastradas para poder deletar");
+                                        }
+
+                                        opcaoValidaMenu = true;
+                                        opcaoValida = false;
                                         break;
 
                                     case "7":
@@ -296,6 +292,11 @@ namespace ProjetoProdutos.Classes
                                             Console.WriteLine($@"
 {produto.ListarOCodigoP()}      {produto.ListarONomeP()}  -   {produto.ListarAMarcaP()}   -    {produto.ListarOPrecoP():C2} (Cadastrado por: {produto.ListarEmailP()})");
                                         }
+                                        break;
+
+                                    case "9":
+                                        Console.WriteLine(Deslogar(usuario));
+                                        opcaoValidaMenu = false;
                                         break;
 
                                     case "X":
